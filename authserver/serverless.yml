@@ -7,6 +7,7 @@ service: authserver
 provider:
   name: aws
   runtime: nodejs20.x
+  region: eu-central-1
   profile: meet-app
   timeout: 30
   environment:
@@ -19,4 +20,10 @@ functions:
     events:
       - http:
           path: api/get-auth-url
+          method: get
+  getAccessToken:
+    handler: handler.getAccessToken
+    events:
+      - http:
+          path: api/token/{code}
           method: get
