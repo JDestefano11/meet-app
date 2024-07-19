@@ -2,6 +2,7 @@
 
 const { google } = require("googleapis");
 const calendar = google.calendar("v3");
+const OAuth2 = google.auth.OAuth2;
 const SCOPES = ["https://www.googleapis.com/auth/calendar.events.public.readonly"];
 const { CLIENT_SECRET, CLIENT_ID, CALENDAR_ID } = process.env;
 const redirect_uris = [
@@ -65,3 +66,54 @@ module.exports.getAccessToken = async (event) => {
     });
 };
 
+
+const getCalendarEvents = async (event) => {
+  const oAuth2Client = new OAuth2(
+    CLIENT_ID,
+    CLIENT_SECRET,
+    redirect_uris[0]
+  );
+
+  return new Promise((resolve, reject) => {
+    const access_token = event.pathParameters.access_token;
+    oAuth2Client.setCredentials({ access_token });
+
+    calendar.events.list(
+      {
+        calendarId: CALENDAR_ID,
+        auth: oAuth2Client,
+        timeMin: new Date().toISOString(),
+        singleEvents: true,
+        orderBy: "startTime",
+      },
+      (error, response) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(response.data.items);
+        }
+      }
+    );
+  })
+    .then((results) => {
+      return {
+        statusCode: 200,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+        },
+        body: JSON.stringify({ events: results }),
+      };
+    })
+    .catch((err) => {
+      return {
+        statusCode: 500,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+        },
+        body: JSON.stringify(err),
+      };
+    });
+};
+
+
+module.exports.getCalendarEvents = getCalendarEvents; 
