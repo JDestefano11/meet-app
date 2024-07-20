@@ -2,16 +2,15 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import EventList from '../components/EventList';
 
-// Mock the Event component
-jest.mock('../components/Event', () => {
-    return function DummyEvent() {
-        return <li>Event</li>;
-    }
-});
-
 describe('<EventList /> component', () => {
+    let EventListComponent;
+
+    beforeEach(() => {
+        EventListComponent = render(<EventList />);
+    });
+
     test('has an element with "list" role', () => {
-        const { queryByRole } = render(<EventList />);
+        const { queryByRole } = EventListComponent;
         expect(queryByRole("list")).toBeInTheDocument();
     });
 
@@ -21,3 +20,4 @@ describe('<EventList /> component', () => {
         expect(getAllByRole("listitem")).toHaveLength(4);
     });
 });
+
