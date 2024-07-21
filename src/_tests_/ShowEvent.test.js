@@ -31,7 +31,8 @@ describe('Event component', () => {
 
     test('has a show details button', () => {
         const { queryByRole } = eventComponent;
-        const button = queryByRole('button', { name: /show details/i });
+        const button = queryByRole('button', { name: 'Show Details' });
         expect(button).toBeTruthy();
     });
+
 });
