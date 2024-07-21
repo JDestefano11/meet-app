@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import EventList from '../components/EventList';
+import { getEvents } from '../api';
 
 describe('<EventList /> component', () => {
     let EventListComponent;
@@ -14,10 +15,11 @@ describe('<EventList /> component', () => {
         expect(queryByRole("list")).toBeInTheDocument();
     });
 
-    test('renders correct number of events', () => {
-        const events = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }];
-        const { getAllByRole } = render(<EventList events={events} />);
-        expect(getAllByRole("listitem")).toHaveLength(4);
+    test('renders correct number of events', async () => {
+        const allEvents = await getEvents();
+        EventListComponent.rerender(<EventList events={allEvents} />);
+        expect(EventListComponent.getAllByRole("listitem")).toHaveLength(allEvents.length);
     });
+
 });
 
