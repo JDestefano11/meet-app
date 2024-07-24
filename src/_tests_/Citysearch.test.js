@@ -1,4 +1,4 @@
-import { render, within } from '@testing-library/react';
+import { render, within, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import CitySearch from '../components/CitySearch';
 import { extractLocations, getEvents } from '../api';
@@ -20,13 +20,17 @@ describe('<CitySearch /> component', () => {
     });
 
     test('renders a list of suggestions when city textbox gains focus', async () => {
-        const { queryByRole } = render(<CitySearch />);
+        const { queryByRole, getByRole } = render(<CitySearch allLocations={[]} />);
         const user = userEvent.setup();
-        const cityTextBox = queryByRole('textbox');
+        const cityTextBox = getByRole('textbox');
         await user.click(cityTextBox);
-        const suggestionList = queryByRole('list');
-        expect(suggestionList).toBeInTheDocument();
-        expect(suggestionList).toHaveClass('suggestions');
+
+        // Wait for the suggestions to be rendered
+        await waitFor(() => {
+            const suggestionList = queryByRole('list');
+            expect(suggestionList).toBeInTheDocument();
+            expect(suggestionList).toHaveClass('suggestions');
+        });
     });
 
     test('updates list of suggestions correctly when user types in city textbox', async () => {
@@ -67,7 +71,7 @@ describe('<CitySearch /> component', () => {
 });
 
 describe('<CitySearch /> integration', () => {
-    test('renders suggestions list when the app is rendered.', async () => {
+    test('renders suggestions list when the app is rendered', async () => {
         const user = userEvent.setup();
         const AppComponent = render(<App />);
         const AppDOM = AppComponent.container.firstChild;
