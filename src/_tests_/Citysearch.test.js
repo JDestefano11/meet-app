@@ -1,6 +1,6 @@
 import { render, within, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import CitySearch from '../components/CitySearch';
+import CitySearch from '../components/Citysearch';
 import { extractLocations, getEvents } from '../api';
 import App from '../App';
 

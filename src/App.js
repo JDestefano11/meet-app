@@ -1,4 +1,4 @@
-import CitySearch from './components/CitySearch';
+import CitySearch from './components/Citysearch';
 import EventList from './components/EventList';
 import NumberOfEvents from './components/NumberOfEvents';
 import { useEffect, useState } from 'react';
