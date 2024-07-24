@@ -56,15 +56,30 @@ defineFeature(feature, test => {
 
 
     test('Select a city from the suggested list', ({ given, when, then }) => {
-        given('the user was typing "Berlin" in the city textbox and the list of suggested cities is showing', () => {
+        let AppComponent;
+        let AppDOM;
+        let CitySearchDOM;
+        let citySearchInput;
+        let suggestionListItems;
 
+        given('the user was typing "Berlin" in the city textbox and the list of suggested cities is showing', async () => {
+            AppComponent = render(<App />);
+            const user = userEvent.setup();
+            AppDOM = AppComponent.container.firstChild;
+            CitySearchDOM = AppDOM.querySelector('#city-search');
+            citySearchInput = within(CitySearchDOM).queryByRole('textbox');
+            await user.type(citySearchInput, "Berlin");
+            suggestionListItems = within(CitySearchDOM).queryAllByRole('listitem');
+            expect(suggestionListItems).toHaveLength(2);
         });
 
-        when('the user selects a city (e.g., "Berlin, Germany") from the list', () => {
-
+        when('the user selects a city (e.g., "Berlin, Germany") from the list', async () => {
+            const user = userEvent.setup();
+            await user.click(suggestionListItems[0]);
         });
 
-        then('their city should be changed to that city (i.e., "Berlin, Germany") and the user should receive a list of upcoming events in that city', () => {
+        then('their city should be changed to that city (i.e., "Berlin, Germany") and the user should receive a list of upcoming events in that city', async () => {
+            expect(citySearchInput.value).toBe('Berlin, Germany');
 
         });
     });
