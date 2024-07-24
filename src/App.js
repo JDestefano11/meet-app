@@ -17,7 +17,8 @@ const App = () => {
 
   const fetchData = async () => {
     const allEvents = await getEvents();
-    setEvents(allEvents.slice(0, currentNOE));
+    const filteredEvents = allEvents.slice(0, currentNOE);
+    setEvents(filteredEvents);
     setAllLocations(extractLocations(allEvents));
   }
 
