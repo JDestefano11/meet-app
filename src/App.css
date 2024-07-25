@@ -3,24 +3,31 @@
 :root {
   --primary-color: #3498db;
   --secondary-color: #2ecc71;
-  --background-color: #f5f5f5;
-  --text-color: #333;
-  --card-background: #fff;
+  --accent-color: #e74c3c;
+  --background-color: #6dd5fa;
+  --text-color: #2c3e50;
+  --card-background: #ffffff;
+  --highlight-color: #f39c12;
 }
 
 body {
   font-family: "Roboto", sans-serif;
-  background-color: var(--background-color);
+  background: linear-gradient(135deg, #6dd5fa, #ff758c);
   color: var(--text-color);
   line-height: 1.6;
   margin: 0;
   padding: 0;
+  min-height: 100vh;
 }
 
 .App {
   max-width: 1200px;
   margin: 0 auto;
   padding: 24px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
 }
 
 ul {
@@ -33,112 +40,25 @@ input[type="text"],
 input[type="number"] {
   width: 100%;
   padding: 12px;
-  border: 1px solid #ddd;
+  border: 2px solid var(--primary-color);
   border-radius: 8px;
   font-size: 16px;
-  transition: border-color 0.3s ease;
-}
-
-input[type="text"]:focus,
-input[type="number"]:focus {
-  border-color: var(--primary-color);
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
-}
-
-#city-search {
-  margin-bottom: 30px;
-}
-
-.suggestions {
-  background-color: var(--card-background);
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.suggestions > li {
-  padding: 12px;
-  transition: background-color 0.3s ease;
-}
-
-.suggestions > li:hover {
-  background-color: rgba(52, 152, 219, 0.1);
-}
-
-.event {
-  background-color: var(--card-background);
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin-bottom: 20px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.event:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
-
-.details-btn {
-  background-color: var(--primary-color);
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.details-btn:hover {
-  background-color: #2980b9;
-}
-
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
-
-:root {
-  --primary-color: #3498db;
-  --secondary-color: #2ecc71;
-  --background-color: #f5f5f5;
-  --text-color: #333;
-  --card-background: #fff;
-}
-
-body {
-  font-family: "Roboto", sans-serif;
-  background-color: var(--background-color);
-  color: var(--text-color);
-  line-height: 1.6;
-  margin: 0;
-  padding: 0;
-}
-
-.App {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 24px;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 input[type="text"],
 input[type="number"] {
-  width: 100%;
+  width: 90%;
+  max-width: 400px;
   padding: 12px;
-  border: 1px solid #ddd;
+  border: 2px solid var(--primary-color);
   border-radius: 8px;
   font-size: 16px;
-  transition: border-color 0.3s ease;
-}
-
-input[type="text"]:focus,
-input[type="number"]:focus {
-  border-color: var(--primary-color);
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.9);
+  display: block;
+  margin-left: 0;
 }
 
 #city-search {
@@ -149,48 +69,62 @@ input[type="number"]:focus {
   background-color: var(--card-background);
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
 .suggestions > li {
   padding: 12px;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.suggestions > li:last-child {
+  border-bottom: none;
 }
 
 .suggestions > li:hover {
   background-color: rgba(52, 152, 219, 0.1);
+  transform: translateX(5px);
 }
 
 .event {
   background-color: var(--card-background);
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
   margin-bottom: 20px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
+  border-left: 5px solid var(--accent-color);
 }
 
 .event:hover {
   transform: translateY(-5px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 .details-btn {
-  background-color: var(--primary-color);
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
   color: white;
   border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
+  padding: 10px 20px;
+  border-radius: 25px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .details-btn:hover {
-  background-color: #2980b9;
+  background: linear-gradient(45deg, #4ecdc4, #ff6b6b);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
 @media (max-width: 479px) {
   .App {
-    padding: 12px;
+    padding: 16px;
   }
   .event {
     padding: 15px;
@@ -199,24 +133,24 @@ input[type="number"]:focus {
 
 @media (min-width: 480px) and (max-width: 767px) {
   .App {
-    padding: 16px;
+    padding: 20px;
   }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
   .App {
-    padding: 20px;
+    padding: 24px;
   }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
   .App {
-    padding: 22px;
+    padding: 28px;
   }
 }
 
 @media (min-width: 1200px) {
   .App {
-    padding: 24px;
+    padding: 32px;
   }
 }
