@@ -23,13 +23,17 @@ body {
   box-sizing: border-box;
 }
 
-.alert-container {
-  margin: 20px 0;
-  padding: 15px;
-  border-radius: 4px;
+.alerts-container {
+  position: absolute;
+  top: 30px;
+  left: 530px;
+  padding: 10px;
+  border-radius: 3px;
   color: var(--card-background);
   font-weight: bold;
   text-align: center;
+  width: 200px;
+  font-size: 14px;
 }
 
 #city-search {
@@ -37,6 +41,7 @@ body {
   flex-direction: column;
   align-items: center;
   margin: 20px 0;
+  position: relative;
 }
 
 #city-search input {
