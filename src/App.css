@@ -10,13 +10,17 @@
   --highlight-color: #f39c12;
 }
 
-body {
-  font-family: "Roboto", sans-serif;
-  background: linear-gradient(135deg, #6dd5fa, #ff758c);
-  color: var(--text-color);
-  line-height: 1.6;
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background: linear-gradient(135deg, var(--background-color), #ff758c);
+  color: var(--text-color);
+  line-height: 1.6;
   min-height: 100vh;
 }
 
@@ -32,19 +36,6 @@ body {
 
 ul {
   list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-input[type="text"],
-input[type="number"] {
-  width: 100%;
-  padding: 12px;
-  border: 2px solid var(--primary-color);
-  border-radius: 8px;
-  font-size: 16px;
-  transition: all 0.3s ease;
-  background-color: rgba(255, 255, 255, 0.9);
 }
 
 input[type="text"],
@@ -58,7 +49,12 @@ input[type="number"] {
   transition: all 0.3s ease;
   background-color: rgba(255, 255, 255, 0.9);
   display: block;
-  margin-left: 0;
+  margin: 0 auto 20px;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+  border-color: var(--highlight-color);
 }
 
 #city-search {
@@ -69,13 +65,12 @@ input[type="number"] {
   background-color: var(--card-background);
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
 }
 
 .suggestions > li {
   padding: 12px;
-  transition: all 0.3s ease;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .suggestions > li:last-child {
@@ -93,8 +88,8 @@ input[type="number"] {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
   margin-bottom: 20px;
-  transition: all 0.3s ease;
   border-left: 5px solid var(--accent-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .event:hover {
@@ -104,16 +99,16 @@ input[type="number"] {
 
 .details-btn {
   background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-  color: white;
+  color: #ffffff;
   border: none;
   padding: 10px 20px;
   border-radius: 25px;
   cursor: pointer;
-  transition: all 0.3s ease;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 1px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .details-btn:hover {
@@ -121,11 +116,30 @@ input[type="number"] {
   transform: translateY(-2px);
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
+#number-of-events {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 90%;
+  max-width: 400px;
+  margin: 0 auto 20px;
+}
+
+#number-of-events label {
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+#number-of-events input {
+  width: 100%;
+  margin: 0;
+}
 
 @media (max-width: 479px) {
   .App {
     padding: 16px;
   }
+
   .event {
     padding: 15px;
   }
