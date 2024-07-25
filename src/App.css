@@ -32,6 +32,7 @@ body {
   border-radius: 12px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8px);
+  text-align: center;
 }
 
 ul {
@@ -116,23 +117,17 @@ input[type="number"]:focus {
   transform: translateY(-2px);
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
+
 #number-of-events {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  width: 90%;
-  max-width: 400px;
-  margin: 0 auto 20px;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 #number-of-events label {
   margin-bottom: 5px;
   font-weight: 500;
-}
-
-#number-of-events input {
-  width: 100%;
-  margin: 0;
 }
 
 @media (max-width: 479px) {
