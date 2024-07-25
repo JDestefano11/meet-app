@@ -63,7 +63,7 @@ export const getAccessToken = async () => {
 const getToken = async (code) => {
     const encodeCode = encodeURIComponent(code);
     const response = await fetch(
-        'https://u4y2iy9ib0.execute-api.eu-central-1.amazonaws.com/dev/api/token' + '/' + encodeCode
+        'https://u4y2iy9ib0.execute-api.eu-central-1.amazonaws.com/dev/api' + '/' + encodeCode
     );
     const { access_token } = await response.json();
     access_token && localStorage.setItem("access_token", access_token);
