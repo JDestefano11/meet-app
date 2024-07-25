@@ -46,8 +46,3 @@ describe('show/hide event details', () => {
         expect(eventDetails).toBeNull();
     });
 });
-
-
-
-
-
