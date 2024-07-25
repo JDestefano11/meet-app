@@ -43,7 +43,7 @@ describe('<CitySearch /> component', () => {
         await user.type(cityTextBox, "Berlin");
 
         const suggestions = allLocations ? allLocations.filter((location) => {
-            a
+
             return location.toUpperCase().indexOf(cityTextBox.value.toUpperCase()) > -1;
         }) : [];
 

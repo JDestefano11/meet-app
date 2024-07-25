@@ -17,7 +17,7 @@ describe('<NumberOfEvents /> component', () => {
     });
 
     test('value changes when user types in the input', async () => {
-        render(<NumberOfEvents setNumberOfEvents={() => { }} />);
+        render(<NumberOfEvents setNumberOfEvents={() => { }} setErrorAlert={() => { }} />);
         const numberInput = screen.getByRole('spinbutton');
         const user = userEvent.setup();
 
