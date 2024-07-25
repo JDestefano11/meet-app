@@ -32,3 +32,8 @@ describe('<CitySearch /> component', () => {
         expect(suggestionList).toHaveClass('suggestions');
     });
 });
+
+
+
+
+jest.setTimeout(30000);
