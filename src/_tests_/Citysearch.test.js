@@ -37,12 +37,13 @@ describe('<CitySearch /> component', () => {
         const user = userEvent.setup();
         const allEvents = await getEvents();
         const allLocations = extractLocations(allEvents);
-        const { queryByRole, queryAllByRole } = render(<CitySearch allLocations={allLocations} />);
+        const { queryByRole, queryAllByRole } = render(<CitySearch allLocations={allLocations} setInfoAlert={() => { }} />);
 
         const cityTextBox = queryByRole('textbox');
         await user.type(cityTextBox, "Berlin");
 
         const suggestions = allLocations ? allLocations.filter((location) => {
+            a
             return location.toUpperCase().indexOf(cityTextBox.value.toUpperCase()) > -1;
         }) : [];
 
@@ -61,6 +62,7 @@ describe('<CitySearch /> component', () => {
             <CitySearch
                 allLocations={allLocations}
                 setCurrentCity={() => { }}
+                setInfoAlert={() => { }}
             />
         );
 
