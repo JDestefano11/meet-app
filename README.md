@@ -1,4 +1,4 @@
-# Meet App: Features and Scenarios
+# EventWave: Features and Scenarios
 
 ## Table of Contents
 1. [Filter Events By City](#feature-1-filter-events-by-city)
