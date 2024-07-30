@@ -1,7 +1,7 @@
 {
   "name": "meet-app",
   "version": "0.1.0",
-  "homepage": "https://JDestefano11.github.io/meet-app",
+  "homepage": "https://jdestefano11.github.io/meet-app",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
