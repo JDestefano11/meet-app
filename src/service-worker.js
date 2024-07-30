@@ -70,28 +70,3 @@ self.addEventListener('message', (event) => {
 });
 
 // Any other custom service worker logic can go here.
-self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open('static-assets-cache').then((cache) => {
-      return cache.addAll([
-        '/',
-        '/index.html',
-        '/static/js/main.chunk.js',
-        '/static/js/0.chunk.js',
-        '/static/js/bundle.js',
-        '/static/css/main.chunk.css',
-
-      ]);
-    })
-  );
-});
-
-
-
-self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    fetch(event.request).catch(() => {
-      return caches.match(event.request);
-    })
-  );
-});
