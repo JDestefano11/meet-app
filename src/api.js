@@ -1,4 +1,5 @@
 import mockData from './mock-data';
+import NProgress from 'nprogress';
 
 
 // Extracts unique locations from event data
@@ -16,7 +17,6 @@ const checkToken = async (accessToken) => {
     return result;
 };
 
-// Fetches events data from the API or returns mock data for local development
 export const getEvents = async () => {
     if (window.location.href.startsWith("http://localhost") ||
         window.location.href.startsWith("https://jdestefano11.github.io/meet-app/")) {
@@ -30,6 +30,8 @@ export const getEvents = async () => {
         const response = await fetch(url);
         const result = await response.json();
         if (result) {
+            NProgress.done();
+            localStorage.setItem("lastEvents", JSON.stringify(result.events));
             return result.events;
         } else return null;
     }
