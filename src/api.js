@@ -18,10 +18,10 @@ const checkToken = async (accessToken) => {
 
 // Fetches events data from the API or returns mock data for local development
 export const getEvents = async () => {
-    if (window.location.href.startsWith("http://localhost")) {
+    if (window.location.href.startsWith("http://localhost") ||
+        window.location.href.startsWith("https://jdestefano11.github.io/meet-app/")) {
         return mockData;
     }
-
     const token = await getAccessToken();
 
     if (token) {
