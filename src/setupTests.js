@@ -1,3 +1,5 @@
+// src/setupTests.js
+
 // jest-dom adds custom jest matchers for asserting on DOM nodes.
 // allows you to do things like:
 // expect(element).toHaveTextContent(/react/i)
@@ -7,11 +9,28 @@ import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 import CitySearch from './components/Citysearch';
 
+// Mock ResizeObserver
+global.ResizeObserver = class {
+    constructor(callback) {
+        this.callback = callback;
+    }
+    observe() {
+        // Mock implementation of observe
+    }
+    unobserve() {
+        // Mock implementation of unobserve
+    }
+    disconnect() {
+        // Mock implementation of disconnect
+    }
+};
+
 describe('<CitySearch /> component', () => {
     let CitySearchComponent;
     beforeEach(() => {
         CitySearchComponent = render(<CitySearch />);
     });
+
     test('renders text input', () => {
         const cityTextBox = CitySearchComponent.queryByRole('textbox');
         expect(cityTextBox).toBeInTheDocument();
@@ -32,8 +51,5 @@ describe('<CitySearch /> component', () => {
         expect(suggestionList).toHaveClass('suggestions');
     });
 });
-
-
-
 
 jest.setTimeout(30000);
