@@ -64,11 +64,11 @@ const App = () => {
         setCurrentCity={setCurrentCity}
         setInfoAlert={setInfoAlert} />
       <NumberOfEvents setNumberOfEvents={setCurrentNOE} setErrorAlert={setErrorAlert} />
-      <EventList events={events} />
       <div className="charts-container">
         <EventScatterPlot data={scatterData} />
         <EventGenresChart events={events} />
       </div>
+      <EventList events={events} />
     </div>
   );
 };
