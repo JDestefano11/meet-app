@@ -133,6 +133,18 @@ body {
   margin-left: 5px;
 }
 
+.charts-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .charts-container {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media only screen and (min-width: 320px) and (max-width: 479px) {
   .App {
     padding: 2% 3%;
