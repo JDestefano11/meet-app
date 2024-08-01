@@ -5,6 +5,7 @@ import NumberOfEvents from './components/NumberOfEvents';
 import { extractLocations, getEvents } from './api';
 import { InfoAlert, ErrorAlert, WarningAlert } from './components/Alert';
 import EventScatterPlot from './components/EventScatterPlot';
+import EventGenresChart from './components/EventGenresChart';
 import './App.css';
 
 const App = () => {
@@ -64,7 +65,10 @@ const App = () => {
         setInfoAlert={setInfoAlert} />
       <NumberOfEvents setNumberOfEvents={setCurrentNOE} setErrorAlert={setErrorAlert} />
       <EventList events={events} />
-      <EventScatterPlot data={scatterData} />
+      <div className="charts-container">
+        <EventScatterPlot data={scatterData} />
+        <EventGenresChart events={events} />
+      </div>
     </div>
   );
 };
