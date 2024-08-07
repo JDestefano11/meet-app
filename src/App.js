@@ -35,7 +35,7 @@ const App = () => {
     setEvents(filteredEvents.slice(0, currentNOE));
     setAllLocations(extractLocations(allEvents));
 
-    const locationCount = allEvents.reduce((acc, event) => {
+    const locationCount = filteredEvents.reduce((acc, event) => {
       const location = event.location;
       if (!acc[location]) {
         acc[location] = 0;
