@@ -83,13 +83,26 @@ body {
   margin-top: 20px;
 }
 
-#event-list li {
+#event-list li.event {
   background-color: var(--card-background);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
   border: 1px solid var(--primary-color);
+  display: flex;
+  flex-direction: column;
+}
+
+#event-list li.event-expanded {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.event-details {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid var(--secondary-color);
 }
 
 #event-list li:hover {
@@ -148,65 +161,9 @@ body {
   .charts-container {
     grid-template-columns: 1fr;
   }
-}
 
-@media only screen and (min-width: 320px) and (max-width: 479px) {
-  .App {
-    padding: 2% 3%;
-  }
-
-  #city-search input,
-  .suggestions {
-    width: 90%;
-  }
-
-  #event-list {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media only screen and (min-width: 480px) and (max-width: 767px) {
-  .App {
-    padding: 2% 4%;
-  }
-
-  #city-search input,
-  .suggestions {
-    width: 80%;
-  }
-
-  #event-list {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  }
-}
-
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  .App {
-    padding: 2% 5%;
-  }
-
-  #event-list {
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  }
-}
-
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
-  .App {
-    padding: 2% 6%;
-  }
-
-  #event-list {
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  }
-}
-
-@media only screen and (min-width: 1200px) {
-  .App {
-    padding: 2% 7%;
-  }
-
-  #event-list {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  #event-list li.event-expanded {
+    grid-column: 1 / -1;
   }
 }
 
